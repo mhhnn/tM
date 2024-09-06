@@ -1,2 +1,30 @@
 @import "global.css";
 @import "theme.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --color-primary: theme("colors.violet.500");
+    --color-secondary: theme("colors.indigo.500");
+    --color-text: theme("colors.gray.900");
+    --color-text-offset: theme("colors.gray.600");
+    --color-background: theme("colors.gray.50");
+    --color-background-offset: theme("colors.gray.100");
+    --color-border: theme("colors.gray.900" / 10%);
+  }
+  
+  .dark {
+    --color-primary: theme("colors.violet.500");
+    --color-secondary: theme("colors.indigo.400");
+    --color-text: theme("colors.gray.50");
+    --color-text-offset: theme("colors.gray.400");
+    --color-background: theme("colors.gray.950");
+    --color-background-offset: theme("colors.gray.800");
+    --color-border: theme("colors.gray.50" / 10%);
+  }
+  
+  body {
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }

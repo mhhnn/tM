@@ -1,0 +1,41 @@
+---
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "pointer-events-none absolute h-full w-full overflow-hidden opacity-50 [perspective:200px]",
+    className
+  ]}
+>
+  <!-- Grid  -->
+  <div class="absolute inset-0 [transform:rotateX(20deg)]">
+    <div
+      class="animate-grid [background-repeat:repeat] [background-size:60px_60px] [height:300vh] [inset:0%_0px] [margin-left:-40%] [transform-origin:100%_0_0] [width:600vw]"
+      style={{
+        backgroundImage: `
+          linear-gradient(to right, var(--grid-line-color) 1px, transparent 0),
+          linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 0)
+        `
+      }}
+    />
+  </div>
+
+  <!-- Background Gradient -->
+  <div
+    class="absolute inset-0"
+    style={{
+      background: `linear-gradient(to top, var(--color-background) 0%, transparent 0%)`
+    }}
+  />
+</div>
+
+<style>
+  :root {
+    --grid-line-color: rgba(0, 0, 0, 0.2);
+  }
+
+  :root[data-theme="dark"] {
+    --grid-line-color: rgba(255, 255, 255, 0.389);
+  }
+</style>

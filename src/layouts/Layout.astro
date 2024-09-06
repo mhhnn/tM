@@ -1,0 +1,36 @@
+---
+import "@fontsource-variable/inter";
+import Header from "~/components/header.astro";
+import Footer from "~/components/footer.astro";
+import "~/styles/index.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "ThreatMatic™ - Smart Zero-Trust Edge Solution" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="h-full motion-safe:scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/src/assets/tM-logo.png" type="image/png" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+  >
+    <div class="relative">
+      <main>
+        <slot />
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>

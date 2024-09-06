@@ -1,0 +1,50 @@
+---
+const { gradientSize = 200, gradientColor = "#262626", gradientOpacity = 0.8, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    "group relative flex size-full overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-900 border text-black dark:text-white justify-center py-4",
+    className,
+  ]}
+>
+  <div class="relative z-10">
+    <slot>
+      <div class="flex items-center justify-center h-full text-center">
+        <p class="text-2xl">Magic Card</p>
+      </div>
+    </slot>
+  </div>
+  <div
+    class="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    id="gradient"
+  />
+</div>
+
+<script define:vars={{ gradientSize, gradientColor, gradientOpacity }}>
+  const card = document.currentScript.previousElementSibling;
+  const gradient = card.querySelector('#gradient');
+
+  function handleMouseMove(e) {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    gradient.style.background = `radial-gradient(${gradientSize}px circle at ${x}px ${y}px, ${gradientColor}, transparent 100%)`;
+    gradient.style.opacity = gradientOpacity;
+  }
+
+  function handleMouseLeave() {
+    gradient.style.opacity = 0;
+  }
+
+  card.addEventListener('mousemove', handleMouseMove);
+  card.addEventListener('mouseleave', handleMouseLeave);
+</script>
+
+<style>
+  .size-full {
+    width: 100%;
+    height: 100%;
+    
+  }
+</style>

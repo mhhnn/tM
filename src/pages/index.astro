@@ -1,18 +1,63 @@
 ---
 import "@fontsource-variable/inter";
-import Compatibility from "~/components/compatibility.astro";
-import Features from "~/components/features.astro";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
 import Intro from "~/components/intro.astro";
-import Showcase from "~/components/showcase.astro";
 import Splash from "~/components/splash.astro";
 import "~/styles/index.css";
+import ThreatMaticLogo from "~/components/animations/ThreatMaticLogo.svelte";
+import "~/assets/tM-logo.png";
+import RetroGrid from "~/components/animations/RetroGrid.astro";
+import Layout from '../layouts/Layout.astro';
+import MagicCard from '../components/animations/MagicCard.astro';
+import Meteors from '../components/animations/Meteors.astro';
+import BlurInText from '../components/animations/BlurInText.astro';
+import Marquee from '../components/animations/Marquee.astro';
+import NumberTicker from '../components/animations/NumberTicker.astro';
+import DockMenu from '../components/animations/DockMenu.svelte';
+import Starfield from '~/components/starfield.astro';
+import ThemeSwitcher from "~/components/theme-switcher.astro";
+
+import { Image } from 'astro:assets';
+import mohanImage from "../assets/team/mohan.png"
+import muruImage from "../assets/team/muru.png"
+import sumoImage from "../assets/team/sumo.png"
 
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
-  "Build fast websites, faster. Astro is a new kind of site builder for the modern web. Lightning-fast performance meets powerful developer experience.";
+  "ThreatMatic™ strikes the perfect balance between security and user-friendliness. Our lightweight and powerful agent seemlessly managed from our modern admin-dashboard ensures that your most valuable assets are protected instantaneously - your advantage when responding to ransomware, malware threats, phishing attacks, DNS poisoning and so much more.";
+const widths = [450, 800];
+const sizes = "(min-width: 640px) 42vw, 67vw";
+
+const reviews = [
+  {
+    name: "Mohan Reddy",
+    username: "@mohan",
+    body: "S/Channel is a game-changer for our organization's security!",
+    img: mohanImage,
+  },
+  {
+    name: "Murugappan Chetty",
+    username: "@muru",
+    body: "Unbelievable performance and security. Highly recommended!",
+    img: muruImage,
+  },
+  {
+    name: "Sumanth",
+    username: "@sumanth",
+    body: "ThreatMatic S/Channel simplified our network security immensely.",
+    img: sumoImage,
+  },
+  // Add more reviews as needed
+];
+
+const navItems = [
+  { title: "Product", url: "/product" },
+  { title: "sChannel™", url: "/schannel" },
+  { title: "Pricing", url: "/pricing" },
+  { title: "Blog", url: "/blog" },
+];
 ---
 
 <!doctype html>
@@ -20,54 +65,55 @@ const description =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/src/assets/tM-logo.png" type="image/png" />
     <meta name="generator" content={generator} />
-
-    <title>Astro Landing Page</title>
+    
+    <title>ThreatMatic™</title>
     <meta name="description" content={description} />
-
-    <!-- social media -->
-    <meta property="og:title" content="Astro" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:url" content={site} />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- initialize theme -->
-    <script is:inline>
-      const themeSaved = localStorage.getItem("theme");
-
-      if (themeSaved) {
-        document.documentElement.dataset.theme = themeSaved;
-      } else {
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
-      }
-
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (event) => {
-          if (!localStorage.getItem("theme")) {
-            document.documentElement.dataset.theme = event.matches
-              ? "dark"
-              : "light";
-          }
-        });
-    </script>
   </head>
   <body
     class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
   >
-    <Header />
+    <Header navItems={navItems} />
+    <ThemeSwitcher />
     <Splash />
     <div class="space-y-24 px-8 py-32">
       <Intro />
-      <Features />
-      <Compatibility />
-      <Showcase />
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <MagicCard gradientColor="#043634" class="p-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Hours Saved</h3>
+          <NumberTicker value={100} duration={2000} class="text-4xl font-bold" />
+          <span class="text-2xl font-bold">+</span>
+        </MagicCard>
+        <MagicCard gradientColor="#4D2506" class="p-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Policy Creation</h3>
+          <NumberTicker value={10} duration={2000} class="text-4xl font-bold" />
+          <span class="text-2xl font-bold">s</span>
+        </MagicCard>
+        <MagicCard gradientColor="#1A365D" class="p-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Policy Propagation</h3>
+          <span class="text-4xl font-bold">ms</span>
+        </MagicCard>
+      </div>
+      
+      <div class="mb-16">
+        <h3 class="text-2xl font-semibold text-center mb-8">What Threatmatic Team Say</h3>
+        <Marquee pauseOnHover class="[--duration:30s]">
+          {reviews.map((review) => (
+            <div class="mx-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+              <div class="flex items-center mb-2">
+                <Image src={review.img} alt={review.name} class="w-10 h-10 rounded-full mr-2" />
+                <div>
+                  <p class="font-semibold">{review.name}</p>
+                  <p class="text-sm text-gray-500">{review.username}</p>
+                </div>
+              </div>
+              <p class="text-sm">{review.body}</p>
+            </div>
+          ))}
+        </Marquee>
+      </div>
     </div>
     <Footer />
   </body>

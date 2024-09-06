@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60">
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4c1d95;stop-opacity:1" /> <!-- from-violet-900 -->
+      <stop offset="50%" style="stop-color:#6d28d9;stop-opacity:1" /> <!-- via-violet-700 -->
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" /> <!-- to-violet-500 -->
+    </linearGradient>
+  </defs>
+  
+  <!-- Company name -->
+  <text x="10" y="45" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="url(#textGradient)">ThreatMatic</text>
+  
+  <!-- Trademark symbol -->
+  <text x="285" y="25" font-family="Arial, sans-serif" font-size="16" fill="#8b5cf6">™</text>
+</svg>

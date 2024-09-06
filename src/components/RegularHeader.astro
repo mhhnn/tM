@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon/components";
+import type { NavItem } from "~/types";
+import ThemeSwitcher from "./theme-switcher.astro";
+
+const navItems: Array<NavItem> = [
+  { title: "Product", url: "/product" },
+  { title: "sChannel™", url: "/schannel" },
+  { title: "Pricing", url: "/pricing" },
+  { title: "Blog", url: "/blog" },
+];
+---
+
+<header
+  id="page-header"
+  class="fixed top-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white bg-gray-900"
+>
+  <a class="flex items-center gap-3 hover:!text-default" href="/">
+    <h1 class="sr-only">ThreatMatic</h1>
+    <img src="/src/assets/ThreatMatic.svg" alt="ThreatMatic Logo" class="h-10" />
+  </a>
+  <div class="flex items-center gap-6">
+    <nav class="hidden sm:block">
+      <ul class="flex items-center gap-6">
+        {
+          navItems.map(({ title, url }) => (
+            <li>
+              <a class="text-sm" href={url}>
+                {title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <ThemeSwitcher />
+    <button
+      id="open-nav-button"
+      type="button"
+      class="btn sm:hidden"
+      aria-label="Navigation"
+    >
+      <Icon name="mdi:menu" class="size-8" />
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu modal -->
+<div id="menu-modal" class="modal hidden" aria-hidden="true">
+  <!-- ... (keep the existing mobile menu code) ... -->
+</div>
+
+<script>
+  // ... (keep the existing script)
+</script>
+
+<style>
+  .fixed-header {
+    @apply fixed top-0;
+    @apply border-default bg-default text-default;
+  }
+  .modal.is-open {
+    @apply block;
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+const { word = "Blur In", duration = 1, class: className } = Astro.props;
+---
+
+<h1
+  class:list={[
+    className,
+    "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]",
+  ]}
+  data-blur-in
+>
+  {word}
+</h1>
+
+<script define:vars={{ duration }}>
+  const blurInElements = document.querySelectorAll('[data-blur-in]');
+  
+  blurInElements.forEach((element) => {
+    element.style.opacity = '0';
+    element.style.filter = 'blur(10px)';
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.animate(
+            [
+              { filter: 'blur(10px)', opacity: 0 },
+              { filter: 'blur(0px)', opacity: 1 },
+            ],
+            {
+              duration: duration * 1000,
+              fill: 'forwards',
+              easing: 'ease-out',
+            }
+          );
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    observer.observe(element);
+  });
+</script>

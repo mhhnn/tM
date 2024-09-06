@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RetroGrid from '../components/animations/RetroGrid.astro';
+import MagicCard from '../components/animations/MagicCard.astro';
+import Meteors from '../components/animations/Meteors.astro';
+import BlurInText from '../components/animations/BlurInText.astro';
+import ThemeSwitcher from '~/components/theme-switcher.astro';
+
+---
+
+<Layout title="ThreatMatic™ - Smart Zero-Trust Edge Solution">
+  <ThemeSwitcher />
+  <main class="relative overflow-hidden">
+    <RetroGrid />
+    
+    <div class="container mx-auto px-4 py-16">
+      <Meteors number={100} />
+      <BlurInText word="ThreatMatic™" class="text-6xl font-bold text-center mb-8" />
+      <Meteors number={100} />
+      
+      <h2 class="text-3xl font-semibold text-center mb-8 gradient-text">
+        Smart Zero-Trust Edge and Rapid Malware Counter Measures
+      </h2>
+      
+      <div class="max-w-3xl mx-auto mb-16">
+        <p class="text-lg mb-6">
+          ThreatMatic™ is a potent solution for a smart zero-trust edge and rapid malware counter measures with unparalleled visibility and control.
+        </p>
+        <p class="mb-6">
+          Today's cyber defenses are typically constructed with a perimeter focus where the security is built from outside-in, and this is the main reason why we have so many security breaches that cause massive loss of data, trust and productivity, and are expensive to mitigate. We have taken a novel approach to building an end point focused zero-trust solution that is guided by simplicity of deployment with ultra low-latency policy updates for an impermeable Zero-Trust edge.
+        </p>
+        <p class="mb-6">
+          Our lightweight agent coupled with our engine has the power to secure your servers and workstations regardless of size, scope or location, in a matter of milliseconds. Our policy driven model is rooted in identity and secured by the latest encryption and cloud-native technology.
+        </p>
+        <p>
+          Our cloud policy engine (also available on-site) is scalable, secure and reliable and can instantly control the security posture on all your endpoints (users and servers) for multi-dimensional protection based on identity and each app/exe.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <MagicCard gradientColor="#043634" class="p-8">
+          <h3 class="text-2xl font-semibold mb-4">Cloud Policy Engine</h3>
+          <p>Scalable, secure, and reliable, our cloud policy engine provides instant control over your security posture across all endpoints.</p>
+        </MagicCard>
+        <MagicCard gradientColor="#4D2506" class="p-8">
+          <h3 class="text-2xl font-semibold mb-4">Lightweight Agent</h3>
+          <p>Our lightweight agent secures servers and workstations of any size or location in milliseconds, providing robust protection.</p>
+        </MagicCard>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @import "../styles/global.css";
+</style>

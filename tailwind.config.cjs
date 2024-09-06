@@ -2,6 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}"],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -21,6 +22,26 @@ module.exports = {
       },
       borderColor: {
         default: "var(--color-border)",
+      },
+      animation: {
+        orbit: "orbit calc(var(--duration)*1s) linear infinite",
+        grid: "grid 15s linear infinite",
+      },
+      keyframes: {
+        orbit: {
+          "0%": {
+            transform:
+              "rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg)",
+          },
+          "100%": {
+            transform:
+              "rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg)",
+          },
+        },
+        grid: {
+          "0%": { transform: "translateY(-50%)" },
+          "100%": { transform: "translateY(0)" },
+        },
       },
     },
   },

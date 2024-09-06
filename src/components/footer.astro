@@ -1,49 +1,90 @@
 ---
-import { Icon } from "astro-icon/components";
-import HeroImage from "~/components/hero-image.astro";
-import type { FooterLink } from "~/types";
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import tmLogo from "~/assets/tM-logo.png";
 
-const links: Array<FooterLink> = [
-  {
-    url: "https://astro.build/",
-    description: "Astro's official website",
-    icon: "mdi:home",
-  },
-  {
-    url: "https://github.com/mhyfritz/astro-landing-page",
-    description: "View source on GitHub",
-    icon: "fa-brands:github-alt",
-  },
-  {
-    url: "https://astro.build/chat",
-    description: "Astro on Discord",
-    icon: "fa-brands:discord",
-  },
-  {
-    url: "https://twitter.com/astrodotbuild",
-    description: "Astro on Twitter",
-    icon: "fa-brands:twitter",
-  },
+const currentYear = new Date().getFullYear();
+
+const resources = [
+  { name: "sChannel", href: "/" },
+  { name: "Pricing", href: "/" },
+];
+
+const followUs = [
+  { name: "GitHub", href: "/" },
+  { name: "Discord", href: "/" },
+];
+
+const legal = [
+  { name: "Privacy Policy", href: "/" },
+  { name: "Terms & Conditions", href: "/" },
+];
+
+const socialIcons = [
+  { name: "facebook", href: "/" },
+  { name: "discord", href: "/" },
+  { name: "twitter", href: "/" },
+  { name: "github", href: "/" },
+  { name: "dribbble", href: "/" },
 ];
 ---
 
-<footer class="relative flex h-64 items-center justify-center">
-  <div class="absolute inset-0 overflow-hidden opacity-40">
-    <HeroImage />
-  </div>
-  <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-4">
-    {
-      links.map((link) => (
-        <li>
-          <a
-            class="flex size-16 items-center justify-center rounded-full border-2 border-current p-4"
-            href={link.url}
-          >
-            <span class="sr-only">{link.description}</span>
-            <Icon class="size-full" name={link.icon} />
+<footer class="bg-white dark:bg-gray-900">
+  <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+    <div class="md:flex md:justify-between">
+      <div class="mb-6 md:mb-0">
+        <a href="https://flowbite.com" class="flex items-center">
+          <Image src={tmLogo} alt="ThreatMatic Logo" width={32} height={32} />
+          <span class = "text-white dark:text-black">--</span>
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">ThreatMatic™ </span>
+        </a>
+      </div>
+      <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+        <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
+          <ul class="text-gray-600 dark:text-gray-400 font-medium">
+            {resources.map(item => (
+              <li class="mb-4">
+                <a href={item.href} class="hover:underline">{item.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
+          <ul class="text-gray-600 dark:text-gray-400 font-medium">
+            {followUs.map(item => (
+              <li class="mb-4">
+                <a href={item.href} class="hover:underline">{item.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+          <ul class="text-gray-600 dark:text-gray-400 font-medium">
+            {legal.map(item => (
+              <li class="mb-4">
+                <a href={item.href} class="hover:underline">{item.name}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+        © {currentYear} <a href="https://flowbite.com/" class="hover:underline">ThreatMatic™</a>. All Rights Reserved.
+      </span>
+      <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
+        {socialIcons.map(item => (
+          <a href={item.href} class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+            <Icon name={`fa-brands:${item.name}`} class="w-5 h-5" />
+            <span class="sr-only">{item.name} page</span>
           </a>
-        </li>
-      ))
-    }
-  </ul>
+        ))}
+      </div>
+    </div>
+  </div>
 </footer>

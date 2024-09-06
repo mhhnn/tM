@@ -1,30 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
 import ContentSection from "~/components/content-section.astro";
+import tmLogo from "~/assets/tM-logo.png";
+import { Image } from "astro:assets";
+import RetroGrid from "~/components/animations/RetroGrid.astro";
+
 ---
 
-<ContentSection title="Just ship less" id="intro">
-  <Icon slot="eyebrow" name="logomark" class="size-32" />
-  <Fragment slot="lead">
-    Astro is a new kind of site builder for the
-    <span class="text-primary">modern</span> web.
-    <span class="text-primary">Lightning-fast</span>
-    performance meets <span class="text-primary">powerful</span> developer experience.
-  </Fragment>
-  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-    <a
-      href="https://docs.astro.build/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon name="mdi:telescope" class="size-8" />
-      <span>Read the docs</span>
-    </a>
-    <a
-      href="https://astro.new/"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon name="mdi:rocket" class="size-8" />
-      <span>Try it out</span>
-    </a>
+<div class="relative z-10">
+  <RetroGrid class="fixed inset-0 z-0" />
+  <div class="flex flex-col items-center mb-6">
+    <Image src={tmLogo} alt="ThreatMatic Logo" width={100} height={100} />
   </div>
-</ContentSection>
+  <ContentSection title="Your shield against cyber threats." id="intro">
+    <Fragment slot="lead">
+      ThreatMatic™ provides     
+      <span class="text-primary">instant protection </span> against ransomware, malware, phishing and other threats. Our
+      <span class="text-primary">user-friendly dashboard</span> and powerful agent makes it
+      <span class="text-primary">easy to secure </span> your valuable assets.
+    </Fragment>
+  </ContentSection>
+</div>

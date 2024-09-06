@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RetroGrid from '../components/animations/RetroGrid.astro';
+import MagicCard from '../components/animations/MagicCard.astro';
+import Meteors from '../components/animations/Meteors.astro';
+import BlurInText from '../components/animations/BlurInText.astro';
+import NumberTicker from '../components/animations/NumberTicker.astro';
+import Header from '~/components/header.astro';
+import Starfield from '~/components/starfield.astro';
+import RegularHeader from '~/components/RegularHeader.astro';
+import ThemeSwitcher from '~/components/theme-switcher.astro';
+
+const features = [
+  { category: "Core Offerings", items: [
+    { name: "Fully ID aware across all your users and workloads", standard: true, premium: true },
+    { name: "Unlimited Policies", standard: true, premium: true },
+    { name: "Run on Customer Provided Infrastructure", standard: true, premium: true },
+    { name: "Cybersecurity Mesh Architecture", standard: true, premium: true },
+    { name: "Cloud Ready ThreatMatic™", standard: true, premium: true }
+  ]},
+  { category: "Network", items: [
+    { name: "Zero Trust Mesh Architecture", standard: true, premium: true },
+    { name: "Edge2Edge Policy", standard: true, premium: true },
+    { name: "DNS Lock", standard: true, premium: true },
+    { name: "Port Scanner Protection", standard: true, premium: true },
+    { name: "Disable DoH (DNS over HTTP)", standard: true, premium: true },
+    { name: "DNSSEC Enforcement", standard: false, premium: true },
+    { name: "Flexible IPsec Traffic Steering with sChannel", standard: false, premium: true },
+    { name: "Metered Socket Actions (QoS)", standard: false, premium: true },
+    { name: "Compliance Signals", standard: false, premium: true },
+    { name: "TrustZero Cloud Proxy", standard: false, premium: true },
+    { name: "Advanced Analytics", standard: false, premium: true },
+    { name: "ThreatMatic API", standard: false, premium: true },
+    { name: "Mitre Attack Integrated", standard: false, premium: true }
+  ]},
+  { category: "Admin Management", items: [
+    { name: "Cloud-Based Management Platform", standard: true, premium: true },
+    { name: "API Support", standard: true, premium: true }
+  ]},
+  { category: "Support", items: [
+    { name: "Self Service Knowledge Base", standard: true, premium: true },
+    { name: "Chat/Email Support", standard: true, premium: true },
+    { name: "Designated Account Manager", standard: false, premium: true },
+    { name: "Technical Specialist", standard: false, premium: true },
+    { name: "Phone Support", standard: false, premium: true }
+  ]}
+];
+
+---
+<Layout title="ThreatMatic™ Pricing">
+  <ThemeSwitcher />
+
+
+  <main class="relative overflow-hidden py-16 bg-gray-900 text-gray-100">
+    <Starfield />
+    <RetroGrid class="opacity-10" />
+    <Meteors number={50} />
+    
+    <div class="container mx-auto ">
+      <BlurInText word="Pricing" class="text-6xl font-bold text-center mb-16" />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <MagicCard gradientColor="#043634" class="p-8 bg-gray-800 border border-gray-700">
+          <h3 class="text-2xl font-semibold mb-4 text-center">Standard</h3>
+          <p class="text-center mb-4">Starting from</p>
+          <div class="text-center">
+            <NumberTicker value={999} duration={500} class="text-5xl font-bold" />
+            <span class="text-3xl font-bold">$</span>
+          </div>
+          <p class="text-center mt-4">per month</p>
+          <a href="#" class="mt-6 block w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-4 py-2.5 text-center text-white">Contact Us</a>
+        </MagicCard>
+        <MagicCard gradientColor="#4D2506" class="p-8 bg-gray-800 border border-gray-700">
+          <h3 class="text-2xl font-semibold mb-4 text-center">Premium</h3>
+          <p class="text-center mb-4">Starting from</p>
+          <div class="text-center">
+            <NumberTicker value={1999} duration={500} class="text-5xl font-bold" />
+            <span class="text-3xl font-bold">$</span>
+          </div>
+          <p class="text-center mt-4">per month</p>
+          <a href="#" class="mt-6 block w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-4 py-2.5 text-center text-white">Contact Us</a>
+        </MagicCard>
+      </div>
+      
+      <MagicCard class="p-2 bg-gray-800 border border-gray-700">
+        <div id="detailed-pricing" class="overflow-x-auto">
+          <table class="w-full text-sm text-left text-gray-400" style="table-layout: fixed;">
+            <thead class="text-xs uppercase bg-gray-700 text-gray-100">
+              <tr>
+                <th scope="col" class="w-64 px-2 py-2">Features</th>
+                <th scope="col" class="w-20 px-1 py-2 text-center">Standard</th>
+                <th scope="col" class="w-20 px-1 py-2 text-center">Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              {features.map(category => (
+                <>
+                  <tr class="border-b border-gray-600 bg-gray-800">
+                    <th scope="row" colspan="3" class="px-2 py-2 font-medium text-gray-200">
+                      {category.category}
+                    </th>
+                  </tr>
+                  {category.items.map(item => (
+                    <tr class="border-b border-gray-700">
+                      <th scope="row" class="px-2 py-2 font-medium text-gray-900 dark:text-gray-100">
+                        {item.name}
+                      </th>
+                      <td class="px-1 py-2 text-center">
+                        {item.standard ? (
+                          <span class="text-green-400 font-bold text-lg glow-green">✓</span>
+                        ) : (
+                          <span class="text-red-400 font-bold text-lg glow-red">✗</span>
+                        )}
+                      </td>
+                      <td class="px-1 py-2 text-center">
+                        {item.premium ? (
+                          <span class="text-green-400 font-bold text-lg glow-green">✓</span>
+                        ) : (
+                          <span class="text-red-400 font-bold text-lg glow-red">✗</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </MagicCard>
+      
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @import "../styles/global.css";
+
+  .glow-green {
+    text-shadow: 0 0 10px #4ade80, 0 0 20px #4ade80, 0 0 30px #4ade80;
+  }
+
+  .glow-red {
+    text-shadow: 0 0 10px #f87171, 0 0 20px #f87171, 0 0 30px #f87171;
+  }
+
+  /* Custom light theme colors */
+  :global(.light) {
+    --color-bg: #f0f4f8;
+    --color-text: #1a202c;
+    --color-primary: #2c5282;
+    --color-secondary: #2b6cb0;
+    --color-accent: #4299e1;
+  }
+
+  :global(.light) main {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  :global(.light) .bg-gray-800 {
+    background-color: #ffffff;
+    color: var(--color-text);
+  }
+
+  :global(.light) .border-gray-700 {
+    border-color: #e2e8f0;
+  }
+
+  :global(.light) .text-gray-900 {
+    color: #000000;
+  }
+
+  :global(.light) .bg-gray-700 {
+    background-color: #edf2f7;
+  }
+
+  :global(.light) .text-gray-100 {
+    color: #1a202c;
+  }
+
+  /* Adjust table width */
+  #detailed-pricing {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+
+  #detailed-pricing {
+    max-width: 85%;
+    width: 100%;
+    margin: 2 auto;
+  }
+</style>
