@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+import StaticHeader from '~/components/staticheader.astro';
+
+const blogPosts = [
+  {
+    title: "Making a case for ThreatMatic in the shadow of last week's CrowdStrike outage",
+    excerpt: "As the world held its breath last week, suffering through what many are calling the 'most devastating IT outage', our engineers at ThreatMatic couldn't resist the call to compare and contrast the two security platforms.",
+    date: "Jul 24, 2024",
+    slug: "making-case-for-threatmatic",
+    readTime: "2 min read",
+    views: 1234
+  },
+  {
+    title: "Signals intelligence is a force-multiplier in a world full of novel cyber threats.",
+    excerpt: "The headlines on any given day in 2024 are rife with accounts of cyberattacks around the world. The attack surface is global and the availability of tools to construct these malicious threats is widespread.",
+    date: "Jan 11, 2024",
+    slug: "signals-intelligence-force-multiplier",
+    views: 987
+  },
+  {
+    title: "Anti-Phishing signals to the rescue!",
+    excerpt: "Consider the vast and chaotic expanse of the Internet today: at every corner of this free-for-all web of information and data, and often unsuspecting patrons/users, increasingly well-organized criminals are perpetuating simple yet powerful phishing and ransomware attacks.",
+    date: "Jan 3, 2024",
+    slug: "anti-phishing-signals",
+    readTime: "1 min read",
+    views: 765
+  },
+  {
+    title: "Rein-in rogue software updates",
+    excerpt: "With ever increasing frequency, apps are reaching out for updates from the Cloud. And with an ever-expanding mobile workforce, your users risk suboptimal network performance whenever software updates take over the bandwidth.",
+    date: "Dec 28, 2023",
+    slug: "rein-in-rogue-software-updates",
+    views: 543
+  },
+  {
+    title: "Cybersecurity thought of the day: Why Zero Trust?",
+    excerpt: "If you ask yourself: where exactly is the security 'perimeter' today? It's a nebulous cloud where users and applications are diffused, especially in a post Covid world with so many of us working remotely.",
+    date: "Dec 27, 2023",
+    slug: "why-zero-trust",
+    views: 321
+  },
+  {
+    title: "Shift left to Trust Zero: Secure your most valuable assets by re-imagining your endpoint posture.",
+    excerpt: "By enforcing application and user identity checking at the 'end-points', before network traffic makes its way in or out to the network, is by far the best and safest approach to thwarting modern threats.",
+    date: "Dec 27, 2023",
+    slug: "shift-left-to-trust-zero",
+    views: 210
+  },
+  {
+    title: "SMB Network Security Shortfalls and Role of Zero Trust",
+    excerpt: "Zero Trust is a security concept and model that challenges the traditional perimeter-based approach to network security. In a traditional security model, there is a presumed level of trust once a user or device gains access to the internal network.",
+    date: "Dec 27, 2023",
+    slug: "smb-network-security-shortfalls",
+    readTime: "3 min read",
+    views: 432
+  },
+  {
+    title: "'Reflective' Zero Trust cybersecurity",
+    excerpt: "Imagine a world where the default security posture between 'clients' and 'data' is defined by an express and explicit contract that requires that their identification is a prerequisite prior to exchange of network data.",
+    date: "Dec 27, 2023",
+    slug: "reflective-zero-trust-cybersecurity",
+    views: 654
+  },
+  {
+    title: "Finally! A model for microsegmentation that actually delivers smart cyber security at every turn.",
+    excerpt: "It's very common today for teams and collaborators to be spread about the world, yet be required to coaslesce as a group or team with intricate application-to-data rules: consider the case with a globally diffused app development community that is dynamically accessing resources on hybrid clouds and on-premises data-centers.",
+    date: "Dec 27, 2023",
+    slug: "microsegmentation-model",
+    views: 876
+  },
+  {
+    title: "Zero Trust Start Button: control domain resolution to prevent any contact with malware",
+    excerpt: "The attack surface permeates our entire planet: every nook and cranny and remote outpost on the Internet is rife with opportunistic bad actors, who are unsurprisingly well organized motivated by the vast reserves of unsuspecting customers around the world.",
+    date: "Dec 27, 2023",
+    slug: "zero-trust-start-button",
+    readTime: "1 min read",
+    views: 1098
+  }
+];
+---
+
+<Layout title="Blog | ThreatMatic">
+  <StaticHeader />
+  <main class="container mx-auto px-4 py-8 mt-20">
+    <h1 class="text-4xl font-bold mb-8 text-center">ThreatMatic™ Blog</h1>
+    <div class="space-y-8">
+      {blogPosts.map((post) => (
+        <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl fade-in-up">
+          <a href={`/blog/${post.slug}`} class="block p-6">
+            <h2 class="text-2xl font-semibold mb-2 text-violet-600 dark:text-violet-400">
+              {post.title}
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">{post.excerpt}</p>
+            <div class="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+              <span>{post.date}</span>
+              <div>
+                {post.readTime && <span class="mr-4">{post.readTime}</span>}
+                <span>{post.views} views</span>
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const articles = document.querySelectorAll('article');
+    articles.forEach((article, index) => {
+      article.style.animationDelay = `${index * 0.1}s`;
+    });
+  });
+</script>

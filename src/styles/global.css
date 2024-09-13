@@ -1,13 +1,51 @@
 @import "theme.css";
 
+body {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
 a,
 .btn {
   @apply transition-colors duration-200;
   @apply hover:text-secondary;
-  @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-transparent;
+  @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent;
+  @apply bg-clip-text;
   @apply bg-gradient-to-br from-violet-900 via-violet-700 to-violet-500;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Add this new class for non-gradient text */
+.solid-text {
+  @apply text-violet-900;
+  opacity: 1;
+  
+}
+
+.opaque-text {
+  opacity: 1 !important;
+  color: var(--color-text);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+}
+::view-transition-old(root) {
+  animation: 0.5s both fade-out;
+}
+::view-transition-new(root) {
+  animation: 0.5s both fade-in;
+}
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

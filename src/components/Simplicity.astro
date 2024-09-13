@@ -1,0 +1,65 @@
+---
+import Lights from "./animations/Lights.svelte"
+---
+
+<div class="m-0 p-0 flex flex-col items-center justify-center h-screen">
+  <span class="bg-black w-full h-auto block rounded-xl overflow-hidden">
+    <div class="w-full h-full relative bg-grid-white/[0.03] px-4 py-10 sm:py-16">
+      <div class="w-full h-full flex flex-col sm:items-center items-start justify-center relative z-[1] animate-moveUp">
+        
+        <!-- Headline -->
+        <div class="text-violet font-light sm:text-center text-start sm:text-5xl text-4xl mt-10">
+          Simplicity Comes Standard
+        </div>
+
+        <!-- Description Text -->
+        <div class="text-white sm:text-center text-start sm:max-w-2xl w-full mt-4">
+          Whether you’re a 10 person small business or a large enterprise, ThreatMatic™ enables uncompromising endpoint protection. Lightning fast policy changes with no learning curve and instantaneous ZTNA enforcement: all administered by a refreshingly simple and modern UI.
+        </div>
+
+        <!-- Features Section in Cards -->
+        <div class="flex flex-wrap justify-center gap-10 sm:mt-12 mt-8 w-full">
+          
+          <!-- Feature 1 - Fingerprint Auth -->
+          <div class="flex flex-col items-center text-center p-6 bg-white/10 rounded-lg shadow-md hover:shadow-lg transition-all space-y-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 1.75a9.25 9.25 0 1 0 0 18.5 9.25 9.25 0 0 0 0-18.5zm0 3a6.25 6.25 0 1 1 0 12.5 6.25 6.25 0 0 1 0-12.5zm0 8a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm-2-4.2c0-.7.4-1.2.9-1.4M8.5 9.75a5.24 5.24 0 0 1 7-2m.5 4.5a2.25 2.25 0 0 1-4.5 0"/>
+            </svg>
+            <p class="text-white font-light">No-compromise endpoint security rooted in identity</p>
+          </div>
+
+          <!-- Feature 2 - Clock -->
+          <div class="flex flex-col items-center text-center p-6 bg-white/10 rounded-lg shadow-md hover:shadow-lg transition-all space-y-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11H11V7h2v6z"/>
+            </svg>
+            <p class="text-white font-light">Millisecond malware countermeasures</p>
+          </div>
+
+          <!-- Centered Feature 3 - Microsegmentation Icon -->
+          <div class="flex flex-col items-center justify-center text-center p-6 bg-white/10 rounded-lg shadow-md hover:shadow-lg transition-all space-y-2">
+            <img src="/Users/nithin/Developer/Work/SPA/tM/src/assets/Simplicity/microsegmentation.png" alt="Microsegmentation Icon" class="w-12 h-12 text-violet-600" />
+            <p class="text-white font-light">On-demand microsegmentation and app traffic control</p>
+          </div>
+
+        </div>
+
+        <!-- CTA Buttons with Violet Gradient -->
+        <div class="mt-10 w-full flex max-sm:flex-col justify-center sm:gap-10 gap-4 text-white">
+          <button class="group h-10 sm:h-8 w-full sm:w-36 bg-gradient-to-br from-purple-600 to-purple-900 border border-violet-700 rounded-lg flex items-center justify-center gap-1.5">
+            <span>Our Work</span>
+            <span class="group-hover:translate-x-0.5 transition-all">&rarr;</span>
+          </button>
+          <button class="h-8 flex items-center justify-center underline" >
+            <span>Contact Us</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Background Animation (Optional) -->
+      <div class="absolute bottom-0 left-0 w-full h-full z-0 animate-appear">
+        <Lights client:load />
+      </div>
+    </div>
+  </span>
+</div>

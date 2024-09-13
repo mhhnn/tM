@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import StaticHeader from '~/components/staticheader.astro';
+
+export function getStaticPaths() {
+  return [
+    {params: {slug: 'making-case-for-threatmatic'}},
+    {params: {slug: 'signals-intelligence-force-multiplier'}},
+    {params: {slug: 'anti-phishing-signals'}},
+    {params: {slug: 'rein-in-rogue-software-updates'}},
+    {params: {slug: 'why-zero-trust'}},
+    {params: {slug: 'shift-left-to-trust-zero'}},
+    {params: {slug: 'smb-network-security-shortfalls'}},
+    {params: {slug: 'reflective-zero-trust-cybersecurity'}},
+    {params: {slug: 'microsegmentation-model'}},
+    {params: {slug: 'zero-trust-start-button'}},
+  ];
+}
+
+const { slug } = Astro.params;
+
+const blogPosts = {
+  'making-case-for-threatmatic': {
+    title: "Making a case for ThreatMatic in the shadow of last week's CrowdStrike outage",
+    date: "Jul 24, 2024",
+    readTime: "2 min read",
+    views: 1234,
+    content: `As the world held its breath last week, suffering through what many are calling the 'most devastating IT outage', our engineers at ThreatMatic couldn't resist the call to compare and contrast the two security platforms.
+
+The de-coupled nature of the ThreatMatic control plane ensures that we never compromise the stability and operation of the endpoints under any circumstances, as it relates every phase of our operation. Our direct and simple approach is built on a modular and asynchronous architecture that ensures that we don't introduce a new single of point of failure. In fact, ThreatMatic agents are never directly involved in the packet forwarding path at the endpoints and the protected hosts continue to function normally with the most recent policy updates in effect, while agents are offline, restarting or updating for any reason. The same engineering principles apply to our policy engines, sChannel and UI modules and they are all independent and discreetly resilient for a continuous, uninterruptable ZTNA experience for our customers.
+
+ThreatMatic also provides a very important benefit in the form of fine-grained control of software updates from the endpoints. With CrowdStrike, for example, a simple policy to limit or block the updates could have been instituted within milliseconds to prevent them from being consumed in the global meltdown that made headlines last week.
+
+Finally, to ensure maximum confidence in all our customers, a robust and durable 'canary' deployment methodology is one of the cornerstones of our engineering philosophy: from provenance and throughout our CI/CD process, every change and enhancement is rigorously tested prior to deployment utilizing our global fleet of servers.`
+  },
+  'signals-intelligence-force-multiplier': {
+    title: "Mohan's Cyber Musings: Signals intelligence is a force-multiplier in a world full of novel cyber threats.",
+    date: "Jan 11, 2024",
+    views: 987,
+    content: `The headlines on any given day in 2024 are rife with accounts of cyberattacks around the world. The attack surface is global and the the availability of tools to construct these malicious threats is widespread. Every day has the potential to present 'zero-day' type, unseen vectors that even the most sophisticated threat-intelligence databases might miss. At ThreatMatic, we are evolving the countermeasures by deploying deep analytics with ML, directly from your compute/human interfaces. This the foundation of our 'detect-anywhere and protect-everywhere' strategy. The dynamic insights are distilled and distributed in real-time to ensure that you have always equipped and ready to deal with the next generation of threats. By integrating readily with all your other cybersecurity tools, ThreatMatic can vastly improve your security posture 2024 and beyond.`
+  },
+  'anti-phishing-signals': {
+    title: "Mohan's Cyber Musings: Anti-Phishing signals to the rescue!",
+    date: "Jan 3, 2024",
+    readTime: "1 min read",
+    views: 765,
+    content: `Consider the vast and chaotic expanse of the Internet today: at every corner of this free-for-all web of information and data, and often unsuspecting patrons/users, increasingly well-organized criminals are perpetuating simple yet powerful phishing and ransomware attacks.
+
+Zero Trust principles can guard against unauthorized access, but how do you defend against unseen threats?
+
+At ThreatMatic, our sophisticated metrics gathering and realtime insights can help your organization and users with highly customizable and efficient protection against such attacks. We are constantly evaluating URLs and activity against them across the entire attack surface, generating pinpoint intelligence that captures not only IP reputation data, but also multiple of sources of intelligence behind the history of the domain names, volumetric analysis, frequency and time domains of when the attempts are occurring, etc.
+
+The end result is state of the art protection and countermeasures against malware and phishing threats: it's like oxygen purification in an increasingly poisoned cyberspace.`
+  },
+  'rein-in-rogue-software-updates': {
+    title: "Mohan's Cybersecurity Musings: Rein-in rogue software updates",
+    date: "Dec 28, 2023",
+    views: 543,
+    content: `With ever increasing frequency, apps are reaching out for updates from the Cloud. And with an ever-expanding mobile workforce, your users risk suboptimal network performance whenever software updates take over the bandwidth. Also, given the synchronization of updates it's not uncommon to see large groups of users in specific geographical areas being impacted by high volume software updates.
+
+With the smartly engineered zero-trust solution that features granular policy control over specific applications/exe and bandwidth used, you now have the ability to institute a healthy dose of predictability when it comes to software and application updates. From establishing guard rails for bandwidth management as well as timing of the updates, ThreatMatic enables you to regain control of your application and network performance.`
+  },
+  'why-zero-trust': {
+    title: "Cybersecurity thought of the day: Why Zero Trust?",
+    date: "Dec 27, 2023",
+    views: 321,
+    content: `If you ask yourself: where exactly is the security 'perimeter' today? It's a nebulous cloud where users and applications are diffused, especially in a post Covid world with so many of us working remotely. The traditional 'firewall' is no longer sufficient to protect your most valuable assets: users and data, from the rapidly evolving threat landscape where millions of malicious actors are conspiring tirelessly, often with nation-state support, to take down unsuspecting and often oblivious net citizenry.`
+  },
+  'shift-left-to-trust-zero': {
+    title: "Shift left to Trust Zero: Secure your most valuable assets by re-imagining your endpoint posture.",
+    date: "Dec 27, 2023",
+    views: 210,
+    content: `By enforcing application and user identity checking at the 'end-points', before network traffic makes its way in or out to the network, is by far the best and safest approach to thwarting modern threats. These threats are evolving at a dizzying pace and the entire planet is a research laboratory for all manner of ill-intent cyber criminals: malware, phishing links, password hacks, etc. The best defense in this dangerous jungle that we call the Internet is deploying Zero-Trust mechanisms that take root in user and application identity, and the timely and consistent enforcement of the checking and verifying access credentials.`
+  },
+  'smb-network-security-shortfalls': {
+    title: "SMB Network Security Shortfalls and Role of Zero Trust",
+    date: "Dec 27, 2023",
+    readTime: "3 min read",
+    views: 432,
+    content: `Zero Trust is a security concept and model that challenges the traditional perimeter-based approach to network security. In a traditional security model, there is a presumed level of trust once a user or device gains access to the internal network. However, the Zero Trust model operates on the principle of 'never trust, always verify.' This means that trust is never assumed, regardless of whether the user or device is inside or outside the corporate network.
+
+The key principles and roles of Zero Trust in network security include:
+No Implicit Trust, Continuous Authentication and Authorization, Micro-Segmentation, Least Privilege Access, Network Visibility, Multi-Factor Authentication (MFA), Continuous Monitoring and Analysis, Encryption, Policy Enforcement
+
+Gaps in majority of Small/Medium Enterprises Security Posture:
+Small and medium enterprises (SMEs) often face unique challenges when it comes to network security. While the specific issues can vary based on factors such as the industry, the complexity of the network, and the nature of the business, some common network security issues in small and medium enterprises include:
+
+1. Limited Resources: SMEs typically have constrained budgets and limited IT staff, making it challenging to invest in and maintain robust security measures.
+
+2. Lack of Dedicated Security Personnel: Many SMEs may not have dedicated cybersecurity experts on their staff. This can result in a lack of expertise in identifying and addressing security vulnerabilities.
+
+3. Outdated Software and Hardware: Using outdated software and hardware can expose SMEs to security vulnerabilities since patches and updates may not be applied promptly.
+
+4. Insufficient Employee Training: Employees may not be adequately trained on security best practices, making them more susceptible to social engineering attacks or unintentional security breaches.
+
+5. Inadequate Access Controls: Weak access controls and poorly managed user permissions can lead to unauthorized access to sensitive information, increasing the risk of data breaches.
+
+6. Lack of Security Policies: SMEs may not have well-defined and enforced security policies, leaving the organization more vulnerable to various security threats.
+
+7. Mobile Device Security: The increasing use of mobile devices for work-related tasks introduces additional security challenges. SMEs may struggle to implement and enforce effective mobile device management (MDM) and bring your own device (BYOD) policies.
+
+8. Insecure Remote Access: With the rise of remote work, SMEs may face challenges in ensuring secure remote access to their networks. Insecure remote access methods can expose the organization to potential breaches.
+
+9. Inadequate Data Backup and Recovery: SMEs may not have robust data backup and recovery strategies in place, making them more susceptible to data loss in the event of a security incident or hardware failure.
+
+10. Vendor and Third-Party Risks: Small and medium enterprises often rely on third-party vendors for various services. However, if these vendors have weak security practices, they can introduce security risks to the SME.
+
+11. Limited Security Awareness: Employees may not be fully aware of the importance of security or the potential risks associated with their actions, leading to unintentional security lapses.
+
+12. Lack of Network Segmentation: Not implementing network segmentation can increase the impact of a security breach by allowing attackers to move laterally within the network.
+
+To address these issues, SMEs should focus on creating a comprehensive security strategy, implementing best practices, and leveraging affordable yet effective security solutions. Regular security audits and employee training can also play a crucial role in enhancing the overall security posture of small and medium enterprises.`
+  },
+  'reflective-zero-trust-cybersecurity': {
+    title: "Mohan's Cyber Musings: 'Reflective' Zero Trust cybersecurity",
+    date: "Dec 27, 2023",
+    views: 654,
+    content: `Imagine a world where the default security posture between 'clients' and 'data' is defined by an express and explicit contract that requires that their identification is a prerequisite prior to exchange of network data. In such a model, servers running workloads are governed by the same strict security principles as the users and applications at end-points. When this is deployed with a centrally managed IAM (identity access manager), it creates an air-tight zero-trust model that will ensure that unauthorized access data or unwarranted execution of apps is prevented, thereby protecting your valuable applications and data from expensive hijacking.`
+  },
+  'microsegmentation-model': {
+    title: "Finally! A model for microsegmentation that actually delivers smart cyber security at every turn.",
+    date: "Dec 27, 2023",
+    views: 876,
+    content: `It's very common today for teams and collaborators to be spread about the world, yet be required to coaslesce as a group or team with intricate application-to-data rules: consider the case with a globally diffused app development community that is dynamically accessing resources on hybrid clouds and on-premises data-centers. There is an ever growing need to leverage zero-trust principles to create, update and delete an intricate security fabric, on-demand and in milli-seconds. A centralized policy based microsegmentation solution that is rooted in zero-trust principles and anchored by modern app and user identity enforcement, and the state-of-the-art encryption frameworks is essential to ensuring the highest level of security and data integrity.`
+  },
+  'zero-trust-start-button': {
+    title: "Zero Trust Start Button: control domain resolution to prevent any contact with malware",
+    date: "Dec 27, 2023",
+    readTime: "1 min read",
+    views: 1098,
+    content: `The attack surface permeates our entire planet: every nook and cranny and remote outpost on the Internet is rife with opportunistic bad actors, who are unsurprisingly well organized motivated by the vast reserves of unsuspecting customers around the world. But we also are developing up-to-the-minute intelligence on where these attacks are originating from. By combining the distributed threat domain intelligence at the foundation of 'name resolution', the zero trust principle can be extended to prevent traffic from even being generated. Although it is possible to bypass DNS and go directly to IP address coordinates, a smart zero-trust posture can detect the missing name-resolution steps and institute blocking. When you combine this recipe with a central policy engine, it is entirely possible to diffuse information about malicious name records in real-time and protect your users and applications: dynamically and at a low false positive rate.`
+  }
+};
+
+const post = blogPosts[slug];
+---
+
+<Layout title={`${post.title} | ThreatMatic`}>
+  <StaticHeader />
+  <main class="container mx-auto px-4 py-8 mt-20 fade-in">
+    <article class="max-w-2xl mx-auto">
+      <h1 class="text-4xl font-bold mb-4 text-center">{post.title}</h1>
+      <div class="flex justify-center items-center mb-8 text-sm text-gray-500">
+        <span class="mr-4">ThreatMatic™</span>
+        <span class="mr-4">{post.date}</span>
+        {post.readTime && <span class="mr-4">{post.readTime}</span>}
+        <span>{post.views} views</span>
+      </div>
+      <div class="prose lg:prose-xl mx-auto">
+        {post.content.split('\n\n').map((paragraph) => (
+          <p class="mb-4 fade-in-up">{paragraph}</p>
+        ))}
+      </div>
+    </article>
+    <div class="mt-8 text-center">
+      <a href="/blog" class="inline-block px-4 py-2 bg-violet-600 text-white rounded hover:bg-violet-700 transition-colors">Back to Blog</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const main = document.querySelector('main');
+    main.classList.add('fade-in');
+
+    const paragraphs = document.querySelectorAll('.prose p');
+    paragraphs.forEach((p, index) => {
+      p.style.animationDelay = `${index * 0.1}s`;
+    });
+  });
+</script>

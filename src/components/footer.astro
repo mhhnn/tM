@@ -6,80 +6,67 @@ import tmLogo from "~/assets/tM-logo.png";
 const currentYear = new Date().getFullYear();
 
 const resources = [
-  { name: "sChannel", href: "/" },
-  { name: "Pricing", href: "/" },
+  { name: "sChannel", href: "/schannel" },
+  { name: "Pricing", href: "/pricing" },
 ];
 
 const followUs = [
-  { name: "GitHub", href: "/" },
-  { name: "Discord", href: "/" },
+  { name: "GitHub", href: "https://github.com/xmlking/spectacular" },
+  { name: "Discord", href: "#discord" },
 ];
 
 const legal = [
-  { name: "Privacy Policy", href: "/" },
-  { name: "Terms & Conditions", href: "/" },
+  { name: "Privacy Policy", href: "#privacy" },
+  { name: "Terms & Conditions", href: "#`terms" },
 ];
 
 const socialIcons = [
-  { name: "facebook", href: "/" },
-  { name: "discord", href: "/" },
-  { name: "twitter", href: "/" },
-  { name: "github", href: "/" },
-  { name: "dribbble", href: "/" },
+  { name: "facebook", href: "#facebook" },
+  { name: "discord", href: "#discord" },
+  { name: "twitter", href: "https://x.com/threatmatic" },
+  { name: "github", href: "https://github.com/xmlking/spectacular" },
 ];
 ---
 
-<footer class="bg-white dark:bg-gray-900">
+<footer id="animated-footer" class="bg-gradient-to-b from-black to-gray-900 text-white">
   <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-    <div class="md:flex md:justify-between">
-      <div class="mb-6 md:mb-0">
-        <a href="https://flowbite.com" class="flex items-center">
-          <Image src={tmLogo} alt="ThreatMatic Logo" width={32} height={32} />
-          <span class = "text-white dark:text-black">--</span>
-          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">ThreatMatic™ </span>
+    <div class="md:flex md:flex-wrap md:justify-between animate-fade-in">
+      <div class="w-full md:w-full lg:w-1/4 mb-6 md:mb-0 animate-slide-up">
+        <a href="/" class="flex items-center hover:scale-105 transition-transform duration-300">
+          <Image src={tmLogo} alt="ThreatMatic Logo" width={32} height={32} class="animate-pulse" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap ml-2 animate-glow">ThreatMatic&trade;</span>
         </a>
       </div>
-      <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-        <div>
-          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Resources</h2>
-          <ul class="text-gray-600 dark:text-gray-400 font-medium">
-            {resources.map(item => (
-              <li class="mb-4">
-                <a href={item.href} class="hover:underline">{item.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
-          <ul class="text-gray-600 dark:text-gray-400 font-medium">
-            {followUs.map(item => (
-              <li class="mb-4">
-                <a href={item.href} class="hover:underline">{item.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-          <ul class="text-gray-600 dark:text-gray-400 font-medium">
-            {legal.map(item => (
-              <li class="mb-4">
-                <a href={item.href} class="hover:underline">{item.name}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+      
+      <div class="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 mt-4 lg:mt-0">
+        {[
+          { title: "Resources", items: resources },
+          { title: "Follow us", items: followUs },
+          { title: "Legal", items: legal }
+        ].map((group, index) => (
+          <div class={`animate-slide-up animation-delay-${index + 1}`}>
+            <h2 class="mb-6 text-sm font-semibold uppercase text-violet-400">{group.title}</h2>
+            <ul class="text-gray-400">
+              {group.items.map((item, itemIndex) => (
+                <li class={`mb-4 animate-fade-in animation-delay-${(index + 1) * 2 + itemIndex}`}>
+                  <a href={item.href} class="hover:text-violet-300 transition-colors duration-300 hover:scale-105 inline-block">{item.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </div>
-    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-    <div class="sm:flex sm:items-center sm:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-        © {currentYear} <a href="https://flowbite.com/" class="hover:underline">ThreatMatic™</a>. All Rights Reserved.
+
+    <hr class="my-6 border-gray-700 sm:mx-auto lg:my-8 animate-expand" />
+
+    <div class="sm:flex sm:flex-wrap sm:items-center sm:justify-between animate-fade-in">
+      <span class="text-sm text-gray-400 sm:text-center mb-4 sm:mb-0 w-full sm:w-auto">
+        &copy; {currentYear} <a href="/" class="hover:text-violet-300">ThreatMatic&trade;</a>. All Rights Reserved.
       </span>
       <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
-        {socialIcons.map(item => (
-          <a href={item.href} class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+        {socialIcons.map((item, index) => (
+          <a href={item.href} class={`text-gray-400 hover:text-violet-300 transition-all duration-300 animate-float animation-delay-${index + 1} social-icon`}>
             <Icon name={`fa-brands:${item.name}`} class="w-5 h-5" />
             <span class="sr-only">{item.name} page</span>
           </a>
@@ -88,3 +75,122 @@ const socialIcons = [
     </div>
   </div>
 </footer>
+
+<style>
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-expand {
+    transform: scaleX(0);
+    animation: expand 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de; }
+    to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de; }
+  }
+
+  @keyframes expand {
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .social-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .social-icon:hover {
+    animation: bounce 0.5s ease infinite;
+    transform: scale(1.2);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1.2); }
+    50% { transform: translateY(-5px) scale(1.2); }
+  }
+
+  .animation-delay-1 { animation-delay: 0.1s; }
+  .animation-delay-2 { animation-delay: 0.2s; }
+  .animation-delay-3 { animation-delay: 0.3s; }
+  .animation-delay-4 { animation-delay: 0.4s; }
+  .animation-delay-5 { animation-delay: 0.5s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in, .animate-slide-up, .animate-glow, .animate-expand, .animate-float, .social-icon:hover {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const footer = document.getElementById('animated-footer');
+    if (footer) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+            entry.target.querySelectorAll('.animate-slide-up, .animate-glow, .animate-expand, .animate-float').forEach(el => {
+              el.classList.add('animate-slide-up', 'animate-glow', 'animate-expand', 'animate-float');
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(footer);
+    }
+
+    // Add click event listeners only to internal links
+    document.querySelectorAll('a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          console.log(`Clicked internal link: ${href}`);
+          // Add your internal link handling logic here
+          // For example, smooth scroll to the target element:
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      } else {
+        // For external links, we don't prevent default behavior
+        link.addEventListener('click', () => {
+          console.log(`Clicked external link: ${href}`);
+        });
+      }
+    });
+  });
+</script>

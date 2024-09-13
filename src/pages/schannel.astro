@@ -7,40 +7,23 @@ import BlurInText from '../components/animations/BlurInText.astro';
 import Marquee from '../components/animations/Marquee.astro';
 import NumberTicker from '../components/animations/NumberTicker.astro';
 import ThemeSwitcher from '~/components/theme-switcher.astro';
+import StaticHeader from '~/components/staticheader.astro';
 
 
-const reviews = [
-  {
-    name: "John Doe",
-    username: "@johndoe",
-    body: "S/Channel is a game-changer for our organization's security!",
-    img: "https://avatar.vercel.sh/john",
-  },
-  {
-    name: "Jane Smith",
-    username: "@janesmith",
-    body: "Unbelievable performance and security. Highly recommended!",
-    img: "https://avatar.vercel.sh/jane",
-  },
-  {
-    name: "Bob Johnson",
-    username: "@bobjohnson",
-    body: "ThreatMatic S/Channel simplified our network security immensely.",
-    img: "https://avatar.vercel.sh/bob",
-  },
-  // Add more reviews as needed
-];
+
 ---
 
+<div>
+  <StaticHeader />
+</div>
 <Layout title="ThreatMatic S/Channel - The Un-VPN Solution">
   
   <main class="relative overflow-hidden">
-    <ThemeSwitcher />
     <RetroGrid />
     <Meteors number={50} />
     
     <div class="container mx-auto px-4 py-16">
-      <BlurInText word="S/Channel" class="text-6xl font-bold text-center mb-8" />
+      <BlurInText word="S/Channel" class="text-6xl font-bold text-center mb-8 py-10" />
       
       <h2 class="text-3xl font-semibold text-center mb-8 gradient-text">
         The "un-VPN" update to 25 year old technology
@@ -59,46 +42,6 @@ const reviews = [
         <p>
           S/Channel also functions as a granular, "app level traffic director" to route traffic to security pipelines and NAT to ensure deep inspection and address obfuscation, in concert with IAM, DLP, XDR and logging services.
         </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <MagicCard gradientColor="#043634" class="p-8 text-center">
-          <h3 class="text-2xl font-semibold mb-4">Hours Saved</h3>
-          <NumberTicker value={100} class="text-4xl font-bold" />
-          <span class="text-2xl font-bold">+</span>
-        </MagicCard>
-        <MagicCard gradientColor="#4D2506" class="p-8 text-center">
-          <h3 class="text-2xl font-semibold mb-4">Policy Creation</h3>
-          <NumberTicker value={10} class="text-4xl font-bold" />
-          <span class="text-2xl font-bold">s</span>
-        </MagicCard>
-        <MagicCard gradientColor="#1A365D" class="p-8 text-center">
-          <h3 class="text-2xl font-semibold mb-4">Policy Propagation</h3>
-          <span class="text-4xl font-bold">ms</span>
-        </MagicCard>
-      </div>
-      
-      <div class="mb-16">
-        <h3 class="text-2xl font-semibold text-center mb-8">What Our Clients Say</h3>
-        <Marquee pauseOnHover class="[--duration:30s]">
-          {reviews.map((review) => (
-            <div class="mx-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-              <div class="flex items-center mb-2">
-                <img src={review.img} alt={review.name} class="w-10 h-10 rounded-full mr-2" />
-                <div>
-                  <p class="font-semibold">{review.name}</p>
-                  <p class="text-sm text-gray-500">{review.username}</p>
-                </div>
-              </div>
-              <p class="text-sm">{review.body}</p>
-            </div>
-          ))}
-        </Marquee>
-      </div>
-      
-      <div class="text-center">
-        <h3 class="text-2xl font-semibold mb-4">Explore S/Channel Features</h3>
-        
       </div>
     </div>
   </main>

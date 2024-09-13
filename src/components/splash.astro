@@ -12,16 +12,19 @@ import ThreatMaticLogo from "~/components/animations/ThreatMaticLogo.svelte";
     <HeroImage />
   </div>
   <div class="relative flex h-full flex-col items-center justify-center">
+
+    <ThreatMaticLogo client:load />
+
     <h2
-      class="flex flex-col items-center gap-2 text-center"
+    class="flex flex-col items-center gap-2 text-center"
+  >
+    <div
+      class="gradient-text text-center font-extralight tracking-tighter text-6xl md:text-6xl"
     >
-      <ThreatMaticLogo client:load />
-      <div
-        class="gradient-text text-center font-extrabold tracking-tighter text-6xl md:text-8xl"
-      >
-        Zero Trust
-        <br /> Demystified.
-      </div>
-    </h2>
+      Zero Trust
+      <br /> Demystified.
+    </div>
+  </h2>
+
   </div>
 </section>

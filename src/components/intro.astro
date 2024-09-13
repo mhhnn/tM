@@ -4,20 +4,28 @@ import ContentSection from "~/components/content-section.astro";
 import tmLogo from "~/assets/tM-logo.png";
 import { Image } from "astro:assets";
 import RetroGrid from "~/components/animations/RetroGrid.astro";
-
 ---
 
 <div class="relative z-10">
   <RetroGrid class="fixed inset-0 z-0" />
-  <div class="flex flex-col items-center mb-6">
-    <Image src={tmLogo} alt="ThreatMatic Logo" width={100} height={100} />
+  <div class="flex justify-center mb-8">
+    <Image
+      src={tmLogo}
+      alt="ThreatMatic Logo"
+      width={100}
+      height={100}
+      class="w-24 h-24 object-contain opacity-100"
+    />
   </div>
-  <ContentSection title="Your shield against cyber threats." id="intro">
+  <ContentSection title="Why choose ThreatMatic™?" id="intro" >
     <Fragment slot="lead">
-      ThreatMatic™ provides     
-      <span class="text-primary">instant protection </span> against ransomware, malware, phishing and other threats. Our
-      <span class="text-primary">user-friendly dashboard</span> and powerful agent makes it
-      <span class="text-primary">easy to secure </span> your valuable assets.
+      <p class="text-center max-w-5xl mx-auto text-base sm:text-lg lg:text-xl">
+        ThreatMatic™ strikes the 
+        <span class="text-primary ">perfect balance</span> between security and user-friendliness. Our
+        <span class="text-primary ">lightweight and powerful agent</span>, seamlessly managed from our
+        <span class="text-primary ">modern admin-dashboard</span>, ensures that your most valuable assets are protected
+        <span class="text-primary ">instantaneously</span> - your advantage when responding to ransomware, malware threats, phishing attacks, DNS poisoning and so much more.
+      </p>
     </Fragment>
   </ContentSection>
 </div>

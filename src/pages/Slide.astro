@@ -1,0 +1,42 @@
+---
+import SlidesAnimation from '../components/SlidesAnimation.svelte';
+
+const slides = [
+  {
+    title: "ThreatMatic: Next-Gen Zero Trust Security",
+    content: "Redefining Zero Trust Security",
+    image: "/api/placeholder/400/200"
+  },
+  {
+    title: "The Problem",
+    content: "• Global cyber threats are evolving rapidly\n• Traditional perimeter security is obsolete\n• SMBs face unique security challenges\n• Increasing remote work complicates security",
+    image: "/api/placeholder/600/300"
+  },
+  {
+    title: "Our Solution",
+    content: "ThreatMatic offers:\n\n• Advanced Zero Trust Architecture\n• Real-time threat intelligence\n• Microsegmentation\n• Granular policy control",
+    image: "/api/placeholder/600/300"
+  },
+  {
+    title: "Key Features",
+    content: "1. Decoupled control plane\n2. Fine-grained update control\n3. Signals intelligence\n4. Anti-phishing protection\n5. Application identity checking",
+    image: "/api/placeholder/600/300"
+  },
+  {
+    title: "Market Advantage",
+    content: "ThreatMatic vs Competitors:\n\n• Uninterrupted ZTNA experience\n• Robust canary deployment\n• Integration with existing tools\n• SMB-focused solutions",
+    image: "/api/placeholder/600/300"
+  }
+];
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreatMatic Pitch Deck</title>
+</head>
+<body class="bg-black text-white">
+    <SlidesAnimation client:load {slides} />
+</body>
+</html>

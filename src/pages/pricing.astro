@@ -9,6 +9,7 @@ import Header from '~/components/header.astro';
 import Starfield from '~/components/starfield.astro';
 import RegularHeader from '~/components/RegularHeader.astro';
 import ThemeSwitcher from '~/components/theme-switcher.astro';
+import StaticHeader from '~/components/staticheader.astro';
 
 const features = [
   { category: "Core Offerings", items: [
@@ -16,7 +17,7 @@ const features = [
     { name: "Unlimited Policies", standard: true, premium: true },
     { name: "Run on Customer Provided Infrastructure", standard: true, premium: true },
     { name: "Cybersecurity Mesh Architecture", standard: true, premium: true },
-    { name: "Cloud Ready ThreatMatic™", standard: true, premium: true }
+    { name: "Cloud Ready ThreatMatic", standard: true, premium: true }
   ]},
   { category: "Network", items: [
     { name: "Zero Trust Mesh Architecture", standard: true, premium: true },
@@ -47,20 +48,17 @@ const features = [
 ];
 
 ---
+<StaticHeader />
 <Layout title="ThreatMatic™ Pricing">
-  <ThemeSwitcher />
 
 
-  <main class="relative overflow-hidden py-16 bg-gray-900 text-gray-100">
-    <Starfield />
-    <RetroGrid class="opacity-10" />
-    <Meteors number={50} />
+  <main class="relative overflow-hidden py-16 bg-white dark:bg-black text-black dark:text-white">
     
-    <div class="container mx-auto ">
+    <div class="container mx-auto py-10 ">
       <BlurInText word="Pricing" class="text-6xl font-bold text-center mb-16" />
       
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-        <MagicCard gradientColor="#043634" class="p-8 bg-gray-800 border border-gray-700">
+      <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <MagicCard gradientColor="var(--color-violet)" class="p-8 bg-white dark:bg-black border border-violet">
           <h3 class="text-2xl font-semibold mb-4 text-center">Standard</h3>
           <p class="text-center mb-4">Starting from</p>
           <div class="text-center">
@@ -68,9 +66,9 @@ const features = [
             <span class="text-3xl font-bold">$</span>
           </div>
           <p class="text-center mt-4">per month</p>
-          <a href="#" class="mt-6 block w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-4 py-2.5 text-center text-white">Contact Us</a>
+          <a href="#" class="mt-6 block w-full bg-violet hover:bg-violet-dark focus:ring-4 focus:ring-violet font-medium rounded-lg text-sm px-4 py-2.5 text-center text-white">Contact Us</a>
         </MagicCard>
-        <MagicCard gradientColor="#4D2506" class="p-8 bg-gray-800 border border-gray-700">
+        <MagicCard gradientColor="var(--color-violet-dark)" class="p-8 bg-white dark:bg-black border border-violet">
           <h3 class="text-2xl font-semibold mb-4 text-center">Premium</h3>
           <p class="text-center mb-4">Starting from</p>
           <div class="text-center">
@@ -78,45 +76,51 @@ const features = [
             <span class="text-3xl font-bold">$</span>
           </div>
           <p class="text-center mt-4">per month</p>
-          <a href="#" class="mt-6 block w-full bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-200 font-medium rounded-lg text-sm px-4 py-2.5 text-center text-white">Contact Us</a>
+          <a href="#" class="mt-6 block w-full bg-violet hover:bg-violet-dark focus:ring-4 focus:ring-violet font-medium rounded-lg text-sm px-4 py-2.5 text-center text-white">Contact Us</a>
         </MagicCard>
-      </div>
+      </div> -->
       
-      <MagicCard class="p-2 bg-gray-800 border border-gray-700">
+      <MagicCard class="p-2 bg-white dark:bg-black border border-violet">
         <div id="detailed-pricing" class="overflow-x-auto">
-          <table class="w-full text-sm text-left text-gray-400" style="table-layout: fixed;">
-            <thead class="text-xs uppercase bg-gray-700 text-gray-100">
+          <table class="w-full text-sm text-left" style="table-layout: fixed;">
+            <thead class="text-xs uppercase text-white">
               <tr>
-                <th scope="col" class="w-64 px-2 py-2">Features</th>
-                <th scope="col" class="w-20 px-1 py-2 text-center">Standard</th>
-                <th scope="col" class="w-20 px-1 py-2 text-center">Premium</th>
+                <th scope="col" class="w-64 px-2 py-2">
+                  <div class="bg-violet rounded-full py-2 px-4">Features</div>
+                </th>
+                <th scope="col" class="w-20 px-1 py-2 text-center">
+                  <div class="bg-violet rounded-full py-2 px-4">Standard</div>
+                </th>
+                <th scope="col" class="w-20 px-1 py-2 text-center">
+                  <div class="bg-violet rounded-full py-2 px-4">Premium</div>
+                </th>
               </tr>
             </thead>
             <tbody>
               {features.map(category => (
                 <>
-                  <tr class="border-b border-gray-600 bg-gray-800">
-                    <th scope="row" colspan="3" class="px-2 py-2 font-medium text-gray-200">
+                  <tr class="border-b border-violet">
+                    <th scope="row" colspan="3" class="px-2 py-2 font-medium text-black dark:text-white">
                       {category.category}
                     </th>
                   </tr>
                   {category.items.map(item => (
-                    <tr class="border-b border-gray-700">
-                      <th scope="row" class="px-2 py-2 font-medium text-gray-900 dark:text-gray-100">
+                    <tr class="border-b border-violet">
+                      <th scope="row" class="px-2 py-2 font-medium text-black dark:text-white">
                         {item.name}
                       </th>
                       <td class="px-1 py-2 text-center">
                         {item.standard ? (
-                          <span class="text-green-400 font-bold text-lg glow-green">✓</span>
+                          <span class="text-green-400 font-bold text-lg glow-green">&#10004;</span>
                         ) : (
-                          <span class="text-red-400 font-bold text-lg glow-red">✗</span>
+                          <span class="text-red-400 font-bold text-lg glow-red">&#10008;</span>
                         )}
                       </td>
                       <td class="px-1 py-2 text-center">
                         {item.premium ? (
-                          <span class="text-green-400 font-bold text-lg glow-green">✓</span>
+                          <span class="text-green-400 font-bold text-lg glow-green">&#10004;</span>
                         ) : (
-                          <span class="text-red-400 font-bold text-lg glow-red">✗</span>
+                          <span class="text-red-400 font-bold text-lg glow-red">&#10008;</span>
                         )}
                       </td>
                     </tr>
@@ -129,6 +133,8 @@ const features = [
       </MagicCard>
       
     </div>
+
+    
   </main>
 </Layout>
 
@@ -143,51 +149,25 @@ const features = [
     text-shadow: 0 0 10px #f87171, 0 0 20px #f87171, 0 0 30px #f87171;
   }
 
-  /* Custom light theme colors */
-  :global(.light) {
-    --color-bg: #f0f4f8;
-    --color-text: #1a202c;
-    --color-primary: #2c5282;
-    --color-secondary: #2b6cb0;
-    --color-accent: #4299e1;
-  }
-
-  :global(.light) main {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-  }
-
-  :global(.light) .bg-gray-800 {
-    background-color: #ffffff;
-    color: var(--color-text);
-  }
-
-  :global(.light) .border-gray-700 {
-    border-color: #e2e8f0;
-  }
-
-  :global(.light) .text-gray-900 {
-    color: #000000;
-  }
-
-  :global(.light) .bg-gray-700 {
-    background-color: #edf2f7;
-  }
-
-  :global(.light) .text-gray-100 {
-    color: #1a202c;
-  }
-
   /* Adjust table width */
-  #detailed-pricing {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-
   #detailed-pricing {
     max-width: 85%;
     width: 100%;
-    margin: 2 auto;
+    margin: 2rem auto;
+  }
+
+  #detailed-pricing th > div {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  #detailed-pricing th:first-child > div {
+    border-top-left-radius: 9999px;
+    border-bottom-left-radius: 9999px;
+  }
+
+  #detailed-pricing th:last-child > div {
+    border-top-right-radius: 9999px;
+    border-bottom-right-radius: 9999px;
   }
 </style>

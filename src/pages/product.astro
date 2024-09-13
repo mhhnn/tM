@@ -5,17 +5,25 @@ import MagicCard from '../components/animations/MagicCard.astro';
 import Meteors from '../components/animations/Meteors.astro';
 import BlurInText from '../components/animations/BlurInText.astro';
 import ThemeSwitcher from '~/components/theme-switcher.astro';
+import StaticHeader from '~/components/staticheader.astro';
+
+import "@fontsource-variable/inter";
+import "~/styles/index.css";
+import "~/assets/tM-logo.png";
+
 
 ---
 
-<Layout title="ThreatMatic™ - Smart Zero-Trust Edge Solution">
-  <ThemeSwitcher />
-  <main class="relative overflow-hidden">
+<div>
+  <StaticHeader />
+</div>
+<Layout title="ThreatMatic - Smart Zero-Trust Edge Solution">
+  <main class="relative overflow-hidden py-10">
     <RetroGrid />
     
     <div class="container mx-auto px-4 py-16">
       <Meteors number={100} />
-      <BlurInText word="ThreatMatic™" class="text-6xl font-bold text-center mb-8" />
+      <BlurInText word="ThreatMatic" class="text-6xl font-bold text-center mb-8" />
       <Meteors number={100} />
       
       <h2 class="text-3xl font-semibold text-center mb-8 gradient-text">
@@ -24,7 +32,7 @@ import ThemeSwitcher from '~/components/theme-switcher.astro';
       
       <div class="max-w-3xl mx-auto mb-16">
         <p class="text-lg mb-6">
-          ThreatMatic™ is a potent solution for a smart zero-trust edge and rapid malware counter measures with unparalleled visibility and control.
+          ThreatMatic&trade; is a potent solution for a smart zero-trust edge and rapid malware counter measures with unparalleled visibility and control.
         </p>
         <p class="mb-6">
           Today's cyber defenses are typically constructed with a perimeter focus where the security is built from outside-in, and this is the main reason why we have so many security breaches that cause massive loss of data, trust and productivity, and are expensive to mitigate. We have taken a novel approach to building an end point focused zero-trust solution that is guided by simplicity of deployment with ultra low-latency policy updates for an impermeable Zero-Trust edge.
@@ -35,6 +43,7 @@ import ThemeSwitcher from '~/components/theme-switcher.astro';
         <p>
           Our cloud policy engine (also available on-site) is scalable, secure and reliable and can instantly control the security posture on all your endpoints (users and servers) for multi-dimensional protection based on identity and each app/exe.
         </p>
+
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">

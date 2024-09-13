@@ -1,0 +1,124 @@
+---
+import { fade, fly, scale, slide } from 'svelte/transition';
+import { spring } from 'svelte/motion';
+import FlickeringGrid from "./animations/FlickeringGrid.svelte";
+import FeatureCard from "./animations/FeatureCard.svelte";
+
+const features = [
+  {
+    title: "Zero Trust",
+    subtitles: [
+      {
+        title: "Application Control",
+        description: "Audit or block applications directly on endpoints by any user, group, device or device-pool groupings."
+      },
+      {
+        title: "Executable Control",
+        description: "Audit or block any executable to IPv4 or IPv6 addresses at endpoints."
+      },
+      {
+        title: "Instant Rule-Based Traffic Control",
+        description: "Instantly block in-flight traffic by deploying rules to users, groups, devices, and device-pools."
+      }
+    ]
+  },
+  {
+    title: "Control Bandwidth",
+    subtitles: [
+      {
+        title: "Free Up Your Bandwidth",
+        description: "Manage network bandwidth to prevent bandwidth-starving software updates."
+      },
+      {
+        title: "Internet & Cloud Resource Bandwidth Limits",
+        description: "Fine-tune bandwidth throttle rates for executables accessing your cloud-resources or the internet."
+      },
+      {
+        title: "Performance Tuning",
+        description: "Control bandwidth allocation to specific workloads bidirectionally by user, group, device, and pool for fine-grained performance tuning at the host level."
+      }
+    ]
+  },
+  {
+    title: "Secure Your Network",
+    subtitles: [
+      {
+        title: "Inbound Access Control",
+        description: "Orchestrate inbound access rules directly on all your endpoints."
+      },
+      {
+        title: "Precise Traffic Monitoring",
+        description: "Track and alert on specific traffic streams from executables to specific destinations and ports."
+      },
+      {
+        title: "Rapid Vulnerability-Based Blocking",
+        description: "Instantly Block in-progress or scheduled software updates with known vulnerabilities."
+      }
+    ]
+  },
+  {
+    title: "Microsegmentation",
+    subtitles: [
+      {
+        title: "Rapid Malware Blocking",
+        description: "Instantly react and block malware on your endpoints by user, group, device, or device-pool coordinates for precisely delivered relief and forensic analysis."
+      },
+      {
+        title: "Granular Traffic Bandwidth Control",
+        description: "Optimize performance and enhance security by controlling bandwidth throttling rates for host-to-host traffic by user, group, device or device-pool."
+      }
+    ]
+  },
+  {
+    title: "Defense-in-Depth",
+    subtitles: [
+      {
+        title: "Threat Intelligence Integration",
+        description: "Combine Cloud-based threat intelligence to automate instantaneous anti-malware policy delivery to your endpoints."
+      },
+      {
+        title: "Browser DNS-over-HTTP Control",
+        description: "Control DNS-over-HTTP for individual browsers by user, group, or device."
+      },
+      {
+        title: "Precise Malware Blocking",
+        description: "Instantly block confirmed malware commands & control malware destination by hostnames or IP addresses."
+      },
+      {
+        title: "Granular DNS Traffic Control",
+        description: "Control DNS traffic to specific servers by users, groups, devices, and device pools."
+      }
+    ]
+  }
+];
+---
+
+<div class="relative w-full py-16 bg-gray-900 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <FlickeringGrid
+      client:load
+      squareSize={4}
+      gridGap={6}
+      color="#8A2BE2"
+      maxOpacity={0.5}
+      flickerChance={0.1}
+    />
+  </div>
+  
+  <div class="relative z-10 container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-white mb-12 text-center">
+      Key Features
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature, index) => (
+        <FeatureCard
+          client:visible
+          title={feature.title}
+          subtitles={feature.subtitles}
+          index={index}
+        />
+      ))}
+    </div>
+  </div>
+</div>

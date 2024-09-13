@@ -3,13 +3,14 @@ import { Icon } from "astro-icon/components";
 import type { NavItem } from "~/types";
 import tmLogo from "~/assets/tM-logo.png";
 import { Image } from "astro:assets";
+import Poplink from "./animations/PopLink.astro";
 
 const navItems: Array<NavItem> = [
-
-  { title: "Product", url: "product" },
-  { title: "sChannel™", url: "schannel" },
-  { title: "Pricing", url: "pricing" },
-    {title:"Blog",url:"blog"},
+  {title:"Home", url:"/"},
+  { title: "Product", url: "/product" },
+  { title: "sChannel™", url: "/schannel" },
+  { title: "Pricing", url: "/pricing" },
+  {title:"Blog", url:"/blog"},
 ];
 ---
 
@@ -17,7 +18,7 @@ const navItems: Array<NavItem> = [
   id="page-header"
   class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
 >
-<a class="flex items-center gap-3 hover:!text-default" href="#">
+<a class="flex items-center gap-3 hover:!text-default" href="/">
   <h1 class="sr-only">ThreatMatic</h1>
   <Image src={tmLogo} alt="ThreatMatic Logo" width={50} height={50} />
 </a>
@@ -28,9 +29,7 @@ const navItems: Array<NavItem> = [
           {
             navItems.map(({ title, url }) => (
               <li>
-                <a class="text-sm" href={url}>
-                  {title}
-                </a>
+                  <Poplink href={url}>{title}</Poplink>
               </li>
             ))
           }
@@ -115,11 +114,17 @@ const navItems: Array<NavItem> = [
     header.classList.toggle("fixed-header", d < 0);
   });
 
-  menu.addEventListener("click", (event) => {
-    if ((event.target as HTMLElement).tagName === "A") {
-      closeMenu();
-    }
-  });
+  // Remove the event listener that was preventing navigation
+  // menu.addEventListener("click", (event) => {
+  //   const target = event.target as HTMLElement;
+  //   if (target.tagName === "A") {
+  //     event.preventDefault(); // Prevent default navigation
+  //     closeMenu();
+  //     setTimeout(() => {
+  //       window.location.href = (target as HTMLAnchorElement).href; // Navigate after modal closes
+  //     }, 300); // Give time for the modal to close before navigating
+  //   }
+  // });
 </script>
 
 <noscript>

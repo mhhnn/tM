@@ -11,8 +11,8 @@
     { icon: 'M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z', text: "Cloud" },
     { icon: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z', text: "Home" },
     { icon: 'M3 3h18v18H3zM9 9h6v6H9z', text: "Onprem" },
-    { icon: '', text: "ZTNA policy enforce" },
-    { icon: '', text: "Microseg.app-aware QoS" },
+    { icon: '', text: "ZTNA" },
+    { icon: '', text: "Micro segmentation" },
     { icon: '', text: 'S/Channel "Un-VPN"' }
   ];
 </script>
@@ -43,7 +43,7 @@ class={cn(
 
 <!-- 2nd orbit - Pink gradient -->
 {#each features.slice(3, 6) as feature, index}
-  <OrbitingCircles class="h-[1px] w-[1px] border-none bg-transparent" radius={120} duration={80} delay={index * -26.67} reverse>
+  <OrbitingCircles class="h-[1px] w-[1px] border-none bg-transparent" radius={130} duration={80} delay={index * -26.67} reverse>
     <span class="flex items-center gap-1 font-bold text-sm bg-gradient-to-r from-pink-300 to-pink-500 text-transparent bg-clip-text drop-shadow-[0_0_5px_rgba(236,72,153,0.5)]">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-pink-400 filter drop-shadow-[0_0_5px_rgba(236,72,153,0.5)]">
         <path d={feature.icon}></path>

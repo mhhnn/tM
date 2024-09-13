@@ -1,0 +1,139 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScTMV_GyN480Jie4voJMwDDb6U6WUv14p0k8do3TPeeb8g9uQ/viewform";
+---
+
+<section id="mailing-list" class="bg-black text-white py-5 mb-1">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6 animate-slide-in">Join our Mailing List!</h2>
+      <p class="text-xl mb-8 animate-fade-in">Stay updated with our latest news, features, and exclusive offers.</p>
+      
+      <div class="bg-gradient-to-r from-purple-900 to-indigo-900 backdrop-blur-md rounded-lg p-8 shadow-lg animate-scale-in">
+        <h3 class="text-2xl font-semibold mb-6 animate-pulse">Interest Form</h3>
+        <a 
+          href={formUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg animate-bounce"
+        >
+          <span class="flex items-center justify-center">
+            <Icon name="mdi:email-plus" class="w-6 h-6 mr-2" />
+            Sign Up Now
+          </span>
+        </a>
+      </div>
+
+      <div class="mt-12 flex justify-center space-x-6 animate-slide-up mb-10">
+        <Icon name="mdi:security" class="w-12 h-12 text-violet-400 animate-float" />
+        <Icon name="mdi:update" class="w-12 h-12 text-violet-400 animate-float animation-delay-2" />
+        <Icon name="mdi:gift" class="w-12 h-12 text-violet-400 animate-float animation-delay-4" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .animate-slide-in {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideIn 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards 0.3s;
+  }
+
+  .animate-scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    animation: scaleIn 0.5s ease-out forwards 0.5s;
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-bounce {
+    animation: bounce 1s infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.5s ease-out forwards 1s;
+  }
+
+  @keyframes slideIn {
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  @keyframes scaleIn {
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .7; }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(-5%) scale(1); }
+    50% { transform: translateY(0) scale(1.05); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes slideUp {
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .animation-delay-2 {
+    animation-delay: 0.2s;
+  }
+
+  .animation-delay-4 {
+    animation-delay: 0.4s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-slide-in, .animate-fade-in, .animate-scale-in, .animate-pulse, .animate-bounce, .animate-float, .animate-slide-up {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const mailingList = document.getElementById('mailing-list');
+    if (mailingList) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.animate-slide-in, .animate-fade-in, .animate-scale-in, .animate-slide-up').forEach(el => {
+              el.classList.add('animate-slide-in', 'animate-fade-in', 'animate-scale-in', 'animate-slide-up');
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(mailingList);
+    }
+  });
+</script>
