@@ -37,8 +37,10 @@ import Lights from "./animations/Lights.svelte"
           </div>
 
           <!-- Centered Feature 3 - Microsegmentation Icon -->
-          <div class="flex flex-col items-center justify-center text-center p-6 bg-white/10 rounded-lg shadow-md hover:shadow-lg transition-all space-y-2">
-            <img src="/Users/nithin/Developer/Work/SPA/tM/src/assets/Simplicity/microsegmentation.png" alt="Microsegmentation Icon" class="w-12 h-12 text-violet-600" />
+          <div class="flex flex-col items-center text-center p-6 bg-white/10 rounded-lg shadow-md hover:shadow-lg transition-all space-y-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-violet-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 11H11V7h2v6z"/>
+            </svg>
             <p class="text-white font-light">On-demand microsegmentation and app traffic control</p>
           </div>
 
@@ -46,13 +48,17 @@ import Lights from "./animations/Lights.svelte"
 
         <!-- CTA Buttons with Violet Gradient -->
         <div class="mt-10 w-full flex max-sm:flex-col justify-center sm:gap-10 gap-4 text-white">
-          <button class="group h-10 sm:h-8 w-full sm:w-36 bg-gradient-to-br from-purple-600 to-purple-900 border border-violet-700 rounded-lg flex items-center justify-center gap-1.5">
-            <span>Our Work</span>
-            <span class="group-hover:translate-x-0.5 transition-all">&rarr;</span>
-          </button>
-          <button class="h-8 flex items-center justify-center underline" >
-            <span>Contact Us</span>
-          </button>
+          <button class="group h-10 sm:h-8 w-full sm:w-36 bg-gradient-to-br from-purple-600 to-purple-900 border border-violet-700 rounded-lg flex items-center justify-center gap-1.5" 
+          onclick="window.location.href='/blog';">
+          <span>Our Work</span>
+          <span class="group-hover:translate-x-0.5 transition-all">&rarr;</span>
+        </button>
+        
+        <button class="h-8 flex items-center justify-center underline" 
+        onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScTMV_GyN480Jie4voJMwDDb6U6WUv14p0k8do3TPeeb8g9uQ/viewform';">
+        <span>Contact Us</span>
+      </button>
+      
         </div>
       </div>
 
